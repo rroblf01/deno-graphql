@@ -9,12 +9,10 @@ const schema = makeExecutableSchema({ resolvers, typeDefs });
 
 const server = new Server({
     handler: async (req) => {
-      const { pathname } = new URL(req.url);
-  
-      return await GraphQLHTTP<Request>({
-          schema,
-          graphiql: true,
-        })(req)
+        return await GraphQLHTTP<Request>({
+            schema,
+            graphiql: true,
+          })(req)
     },
     port: 3000,
   });
