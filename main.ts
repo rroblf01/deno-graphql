@@ -11,14 +11,12 @@ const server = new Server({
   handler: async (req) => {
     const { pathname } = new URL(req.url);
 
-    return pathname === "/graphql"
-      ? await GraphQLHTTP<Request>({
+    return await GraphQLHTTP<Request>({
         schema,
         graphiql: true,
       })(req)
-      : new Response("Not Found", { status: 404 });
   },
-  port: 80,
+  port: 3000,
 });
 
 server.listenAndServe();
