@@ -7,11 +7,16 @@ import { typeDefs } from "./typedfs.ts";
 
 const schema = makeExecutableSchema({ resolvers, typeDefs });
 
-Server(async (req) => {
+const server = new Server({
+    handler: async (req) => {
       const { pathname } = new URL(req.url);
   
       return await GraphQLHTTP<Request>({
           schema,
           graphiql: true,
         })(req)
-    });
+    },
+    port: 3000,
+  });
+  
+  server.listenAndServe();
