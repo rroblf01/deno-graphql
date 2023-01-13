@@ -1,9 +1,8 @@
-import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
-import { GraphQLHTTP } from "https://deno.land/x/gql@1.1.2/mod.ts";
-import { makeExecutableSchema } from "https://deno.land/x/graphql_tools@0.0.2/mod.ts";
-import "https://deno.land/x/gql@1.1.2/graphiql/render.ts";
-import { resolvers } from "./resolvers.ts";
-import { typeDefs } from "./typedfs.ts";
+import { serve } from "./deps.ts"
+import { GraphQLHTTP } from "./deps.ts"
+import { makeExecutableSchema } from "./deps.ts"
+import { resolvers } from "./graphql/resolvers.ts";
+import { typeDefs } from "./graphql/typedfs.ts";
 
 const schema = makeExecutableSchema({ resolvers, typeDefs });
 
