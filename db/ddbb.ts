@@ -1,10 +1,11 @@
 import { MongoClient } from "../deps.ts";
 import { Dinosaur } from "../models/dinosaur.ts";
+import { getMongoCredentials } from "../config/config.ts";
 
+const { user, password } = getMongoCredentials();
 const client = new MongoClient();
-const uri = `mongodb+srv://${Deno.env.get("MONGO_USER")}:${
-  Deno.env.get("MONGO_PASSWORD")
-}@cluster0.u8kicjc.mongodb.net/?authMechanism=SCRAM-SHA-1`;
+const uri =
+  `mongodb+srv://${user}:${password}@cluster0.u8kicjc.mongodb.net/?authMechanism=SCRAM-SHA-1`;
 await client.connect(uri);
 
 const db = client.database("deno-graphql");
