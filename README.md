@@ -7,7 +7,7 @@ https://ricardo-graphql.deno.dev/
 
 ```
 type Dinosaur {
-  id: Int
+  _id: String
   name: String
   description: String
 }
@@ -18,12 +18,12 @@ type Dinosaur {
 ```
 type Query {
   allDinosaurs: [Dinosaur]
-  oneDinosaurById(id: Int): Dinosaur
+  oneDinosaurById(_id: String): Dinosaur
   oneDinosaurByName(name: String): Dinosaur
 }
 
 type Mutation {
   addDinosaur(name: String, description: String): Dinosaur
-  removeDinosaur(id: Int): Dinosaur
+  removeDinosaur(_id: String): Dinosaur
 }
 ```
